@@ -49,7 +49,20 @@ public class ProductController {
     }
 
     @GetMapping("/products/search")
-    public List<Product> searchProducts(@RequestParam String keyword) {
-        return service.searchProducts(keyword);
+    public ResponseEntity<List<Product>> searchProducts(
+            @RequestParam String keyword,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+
+        try {
+            if (keyword.trim().isEmpty()) {
+                return ResponseEntity.badRequest().build();
+            }
+
+            List<Product> products = service.searchProducts(keyword, page, size);
+            return ResponseEntity.ok(products);
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().build();
+        }
     }
 }
