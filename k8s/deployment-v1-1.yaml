@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: product-service
-        image: your-dockerhub/product-service:v1.1.0
+        image: product-service:v1.1
         ports:
         - containerPort: 8080
         env:
@@ -37,13 +37,13 @@ spec:
           httpGet:
             path: /actuator/health
             port: 8080
-          initialDelaySeconds: 30
+          initialDelaySeconds: 60
           periodSeconds: 10
         readinessProbe:
           httpGet:
             path: /actuator/health
             port: 8080
-          initialDelaySeconds: 5
+          initialDelaySeconds: 30
           periodSeconds: 5
 ---
 apiVersion: v1
