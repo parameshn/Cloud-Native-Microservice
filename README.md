@@ -1,5 +1,5 @@
 # spring-boot-crud-example
-# Product Catalog Microservice - Task 2
+# Product Catalog Cloud-Native Microservice
 
 ## Overview
 Containerized Spring Boot microservice with multiple API versions deployed on Kubernetes with CI/CD automation.
